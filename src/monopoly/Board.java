@@ -84,6 +84,9 @@ public static void main(String[] args) throws IOException
 		case 0:
 			done=true;
 			break;
+			default:
+				System.err.println("Wrong input");
+				break;
 		}
 	}while(!done);
 	System.out.println("Program exited");

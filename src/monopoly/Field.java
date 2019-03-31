@@ -6,7 +6,9 @@ String color;
 int price;
 int houses;
 boolean isHotel;
-boolean isTrain;
+boolean owned;
 int housePrice;
 Player owner;
+protected abstract void buyField(Player player);
+protected abstract boolean isOwned();
 }

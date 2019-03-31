@@ -7,6 +7,7 @@ public class OtherField extends Field{
 	{
 		this.name=_name;
 		this.type=t;
+		this.price=0;
 	}
 	public void doAction()
 	{
@@ -25,5 +26,15 @@ public class OtherField extends Field{
 		case 5:
 			break;
 		}
+	}
+	@Override
+	protected void buyField(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	protected boolean isOwned() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
