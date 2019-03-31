@@ -2,40 +2,28 @@ package monopoly;
 
 public class OtherField extends Field{
 //public void()
-	public OtherField(String _name)
+	int type;
+	public OtherField(String _name, int t)
 	{
 		this.name=_name;
+		this.type=t;
 	}
-	int checkWhat()
+	public void doAction()
 	{
-		int what=0;
-		switch(this.name)
+		switch(this.type)
 		{
-		case "Stard/End":
-			what=0;
+		case 0:
 			break;
-		case "Community Chest":
-			what=1;
+		case 1:
 			break;
-		case "Income Tax":
-			what=2;
+		case 2:
 			break;
-		case "Chance":
-			what=3;
+		case 3:
 			break;
-		case "Visiting Jail":
-			what=0;
+		case 4:
 			break;
-		case "Free Parking":
-			what=0;
-			break;
-		case "Jail":
-			what=4;
-			break;
-		case "Luxury Tax":
-			what=5;
+		case 5:
 			break;
 		}
-		return what;
 	}
 }

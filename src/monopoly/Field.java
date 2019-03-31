@@ -8,5 +8,5 @@ int houses;
 boolean isHotel;
 boolean isTrain;
 int housePrice;
-
+Player owner;
 }
