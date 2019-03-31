@@ -1,9 +1,8 @@
 package monopoly;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Board {
 	Dice dice;
@@ -60,32 +59,33 @@ public Board()
 
 public static void main(String[] args) throws IOException
 {
-	char c;
 	int i=0;
 	Board board=new Board();
-	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	Scanner s=new Scanner(System.in);
+	int choice;
 	boolean done=false;
 	do
 	{
-		System.out.println("Press 'c' to continue, 'q' to exit");
-		c=(char)br.read();
-		if(c=='c')
+		System.out.println("Press '1' to continue, '0' to exit");
+		choice=s.nextInt();
+		switch(choice)
 		{
-		board.players.get(i).playGame(board,br);
-		if (board.players.size()>i+1)
-		{
-			++i;
-		}
-		else
-		{
-			i=0;
-		}
-		}
-		else if(c=='q')
-		{
+		case 1:
+			board.players.get(i).playGame(board);
+			if (board.players.size()>i+1)
+			{
+				++i;
+			}
+			else
+			{
+				i=0;
+			}
+			break;
+		case 0:
 			done=true;
+			break;
 		}
-	}	while(!done);
+	}while(!done);
 	System.out.println("Program exited");
 	//int sum=board.dice.rollDice();
 	//System.out.println(sum);

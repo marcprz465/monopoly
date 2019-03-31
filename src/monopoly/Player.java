@@ -1,7 +1,7 @@
 package monopoly;
 
-import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Player {
 String name;
@@ -19,19 +19,25 @@ public Player getPlayer()
 {
 	return this;
 }
-public void playGame(Board _board, BufferedReader b) throws IOException
+public void playGame(Board _board) throws IOException
 {
+	int choice;
+	Scanner sc=new Scanner(System.in);
 	boolean done=false;
-	System.out.println("Press 'l' to roll a dice");
+	System.out.println("Press '2' to roll a dice");
 	do
 	{
-	if((char)b.read()=='l')
-	{
-	int rolled=_board.dice.rollDice();
-	position+=rolled;
-	System.out.println("Rolled "+rolled+", you are on "+_board.fields.get(position).name+" now.");
-	done=true;
-	}
+		choice=sc.nextInt();
+		switch(choice)
+		{
+		case 2:
+			int rolled=_board.dice.rollDice();
+			position+=rolled;
+			System.out.println("Rolled "+rolled+", you are on "+_board.fields.get(position).name+" now.");
+			System.out.println();
+			done=true;
+			break;
+		}
 	} while(!done);
 }
 }
