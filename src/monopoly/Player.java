@@ -43,7 +43,19 @@ public void playGame(Board _board, Scanner sc) throws IOException
 		switch(choice)
 		{
 		case '2':
+			boolean rollDone=false;
+			int rolles=0;
+			while(!rollDone)
+			{
+				if(rolles==2)
+				{
+					rollDone=true;
+				}
+				else
+				{
 			int rolled=_board.dice.rollDice();
+			if(rolled<13)
+			{
 			int tempPosition=position+rolled;
 			if(tempPosition>39)
 			{
@@ -54,6 +66,24 @@ public void playGame(Board _board, Scanner sc) throws IOException
 			else
 			{
 			position+=rolled;
+			}
+			rollDone=true;
+			}
+			else
+			{
+				rolled-=100;
+				int tempPosition=position+rolled;
+				if(tempPosition>39)
+				{
+					position=position+rolled-40;
+					this.cash+=200;
+					System.out.println("$200 for crossing start");
+				}
+				else
+				{
+				position+=rolled;
+				}
+				rollDone=false;
 			}
 			if(!_board.fields.get(position).isOwned())
 			{
@@ -123,6 +153,9 @@ public void playGame(Board _board, Scanner sc) throws IOException
 				System.out.println(_board.fields.get(position).owner.name+"'s field. You are paying $"+_board.fields.get(position).payFine(this,_board.fields.get(position).owner));
 			}
 			done=true;
+			rolles++;
+				}
+			}
 			break;
 		case '9':
 			this.displayPlayer();

@@ -9,26 +9,24 @@ public class OtherField extends Field{
 		this.type=t;
 		this.price=0;
 	}
-//	public String checkType()
-//	{
-//		String temp;
-//		switch(this.type)
-//		{
-//		case 0:
-//			break;
-//		case 1:
-//			break;
-//		case 2:
-//			break;
-//		case 3:
-//			break;
-//		case 4:
-//			break;
-//		case 5:
-//			break;
-//		}
-//		return temp;
-//	}
+	public void doAction()
+	{
+		switch(this.type)
+		{
+		case 0://start/end
+			break;
+		case 1://com chest
+			break;
+		case 2://income tax
+			break;
+		case 3://chance
+			break;
+		case 4://jail
+			break;
+		case 5://luxury tax
+			break;
+		}
+	}
 	@Override
 	protected void buyField(Player player) {
 		// TODO Auto-generated method stub
