@@ -24,6 +24,7 @@ public boolean isOwned()
 }
 public void buyField(Player pl)
 {
+	this.owner=pl;
 	this.owned=true;
 	pl.cash-=this.price;
 }

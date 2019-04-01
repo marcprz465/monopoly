@@ -32,16 +32,18 @@ public void displayPlayer()
 public void playGame(Board _board) throws IOException
 {
 	System.out.println("Player "+this.name+", cash = $"+this.cash);
-	int choice, choice2;
+	char choice, choice2;
 	Scanner sc=new Scanner(System.in);
 	boolean done=false;
 	System.out.println("Press '2' to roll a dice, '9' to check your status");
 	do
 	{
-		choice=sc.nextInt();
+		choice=sc.next().charAt(0);
+		if(Character.isDigit(choice))
+		{
 		switch(choice)
 		{
-		case 2:
+		case '2':
 			int rolled=_board.dice.rollDice();
 			int tempPosition=position+rolled;
 			if(tempPosition>39)
@@ -56,12 +58,14 @@ public void playGame(Board _board) throws IOException
 			System.out.println();
 			
 			System.out.println("Press '1' to continue, '3' to buy this field (if enough cash)");
-			choice2=sc.nextInt();
+			choice2=sc.next().charAt(0);
+			if(Character.isDigit(choice2))
+			{
 			switch(choice2)
 			{
-			case 1:
+			case '1':
 				break;
-			case 3:
+			case '3':
 				if(this.cash>=_board.fields.get(position).price&&!_board.fields.get(position).isOwned()&&_board.fields.get(position).price!=0)
 				{
 				_board.fields.get(position).buyField(this);
@@ -85,9 +89,10 @@ public void playGame(Board _board) throws IOException
 					System.err.println("Wrong input");
 				break;
 			}
+			}
 			done=true;
 			break;
-		case 9:
+		case '9':
 			this.displayPlayer();
 			System.out.println();
 			System.out.println("Press '2' to roll a dice");
@@ -95,6 +100,7 @@ public void playGame(Board _board) throws IOException
 		default:
 			System.err.println("Wrong input");
 			break;
+		}
 		}
 	} while(!done);
 }

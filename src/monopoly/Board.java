@@ -13,7 +13,7 @@ public Board()
 	dice=new Dice();
 	fields=new ArrayList<Field>();
 	players=new ArrayList<Player>();
-	players.add(new Player("Tester"));
+//	players.add(new Player("Tester"));
 
 	fields.add(0, new OtherField("Start/End",0));
 	fields.add(1, new HouseField("Mediterranean Avenue","brown",60,50));
@@ -62,15 +62,21 @@ public static void main(String[] args) throws IOException
 	int i=0;
 	Board board=new Board();
 	Scanner s=new Scanner(System.in);
-	int choice;
+	char choice;
 	boolean done=false;
+	System.out.println("Enter first player's name:");
+	board.players.add(new Player(s.next()));
+	System.out.println("Enter second player's name:");
+	board.players.add(new Player(s.next()));
 	do
 	{
 		System.out.println("Press '1' to continue, '0' to exit");
-		choice=s.nextInt();
+		choice=s.next().charAt(0);
+		if(Character.isDigit(choice))
+		{
 		switch(choice)
 		{
-		case 1:
+		case '1':
 			board.players.get(i).playGame(board);
 			if (board.players.size()>i+1)
 			{
@@ -81,12 +87,13 @@ public static void main(String[] args) throws IOException
 				i=0;
 			}
 			break;
-		case 0:
+		case '0':
 			done=true;
 			break;
 			default:
 				System.err.println("Wrong input");
 				break;
+		}
 		}
 	}while(!done);
 	System.out.println("Program exited");
