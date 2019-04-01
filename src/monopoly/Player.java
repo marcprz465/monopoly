@@ -55,6 +55,8 @@ public void playGame(Board _board, Scanner sc) throws IOException
 			{
 			position+=rolled;
 			}
+			if(!_board.fields.get(position).isOwned())
+			{
 			System.out.println("Rolled "+rolled+", you are on ["+position+1+"] "+_board.fields.get(position).name+" now. It's $"+_board.fields.get(position).price+".");
 			System.out.println();
 			
@@ -114,6 +116,11 @@ public void playGame(Board _board, Scanner sc) throws IOException
 					System.err.println("Wrong input");
 				break;
 			}
+			}
+			}
+			else if(_board.fields.get(position).isOwned()&&_board.fields.get(position).owner!=this)
+			{
+				System.out.println(_board.fields.get(position).owner.name+"'s field. You are paying $"+_board.fields.get(position).payFine(this,_board.fields.get(position).owner));
 			}
 			done=true;
 			break;

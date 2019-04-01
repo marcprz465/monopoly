@@ -98,4 +98,44 @@ protected void buildHouse(int n) {
 	// TODO Auto-generated method stub
 	
 }
+public int payFine(Player pl, Player owner)
+{
+	int fine=0;
+	if(!this.isHotel)
+	{
+	switch(this.houses)
+	{
+	case 0:
+		fine=(int) (0.1*this.price);
+		break;
+	case 1:
+		fine=(int) (0.3*this.price);
+		break;
+	case 2:
+		fine=(int) (0.5*this.price);
+		break;
+	case 3:
+		fine=this.price;
+		break;
+	case 4:
+		fine=2*this.price;
+		break;
+	}
+	}
+	else
+	{
+		fine=4*this.price;
+	}
+	if(pl.cash>=fine)
+	{
+	pl.cash-=fine;
+	owner.cash+=fine;
+	return fine;
+	}
+	else
+	{
+		System.err.println("Not enough money.");
+	return 0;	
+	}
+}
 }

@@ -49,4 +49,9 @@ public class OtherField extends Field{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	protected int payFine(Player player, Player owner2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
