@@ -1,32 +1,34 @@
 package monopoly;
 
 public class OtherField extends Field{
-//public void()
 	int type;
+	String typeName;
 	public OtherField(String _name, int t)
 	{
 		this.name=_name;
 		this.type=t;
 		this.price=0;
 	}
-	public void doAction()
-	{
-		switch(this.type)
-		{
-		case 0:
-			break;
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		case 5:
-			break;
-		}
-	}
+//	public String checkType()
+//	{
+//		String temp;
+//		switch(this.type)
+//		{
+//		case 0:
+//			break;
+//		case 1:
+//			break;
+//		case 2:
+//			break;
+//		case 3:
+//			break;
+//		case 4:
+//			break;
+//		case 5:
+//			break;
+//		}
+//		return temp;
+//	}
 	@Override
 	protected void buyField(Player player) {
 		// TODO Auto-generated method stub
@@ -36,5 +38,10 @@ public class OtherField extends Field{
 	protected boolean isOwned() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	public void displayInfo()
+	{
+		System.out.println(this.name);
+		System.out.println("This field can't be bought");
 	}
 }

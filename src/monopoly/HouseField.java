@@ -44,4 +44,31 @@ public void sellHotel()
 {
 	this.isHotel=false;
 }
+public void displayInfo()
+{
+	/*this.name=_name;
+	this.color=_color;
+	this.price=_price;
+	this.houses=0;
+	this.isHotel=false;
+	this.housePrice=houP;
+	this.owned=false;*/
+	System.out.println(this.name);
+	System.out.println(this.color);
+	if(this.owned)
+	{
+		System.out.println("Owner: "+this.owner.name);
+		if(!isHotel)
+		System.out.println("Houses: "+this.houses);
+		else
+			System.out.println("Hotel: "+isHotel);
+		System.out.println(this.housePrice);
+	}
+	else
+	{
+		System.out.println("No owner.");
+		System.out.println("Price: "+this.price);
+	}
+	System.out.println(this.housePrice);
+}
 }

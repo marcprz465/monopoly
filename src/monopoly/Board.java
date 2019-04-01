@@ -56,7 +56,6 @@ public Board()
 	fields.add(38, new OtherField("Luxury Tax",5));
 	fields.add(39, new HouseField("Boardwalk","blue",400,200));
 }
-
 public static void main(String[] args) throws IOException
 {
 	int i=0;
@@ -64,10 +63,20 @@ public static void main(String[] args) throws IOException
 	Scanner s=new Scanner(System.in);
 	char choice;
 	boolean done=false;
-	System.out.println("Enter first player's name:");
-	board.players.add(new Player(s.next()));
-	System.out.println("Enter second player's name:");
-	board.players.add(new Player(s.next()));
+	char maxPlayers;
+	do
+	{
+		System.out.println("How many players are playing?");
+	maxPlayers=s.next().charAt(0);
+	} while(!Character.isDigit(maxPlayers));
+	
+	for(int players=0;players<(int)maxPlayers-48;players++)
+	{
+		System.out.println("Enter "+(players+1)+" player's name:");
+		board.players.add(new Player(s.next()));
+	}
+//	System.out.println("Enter second player's name:");
+//	board.players.add(new Player(s.next()));
 	do
 	{
 		System.out.println("Press '1' to continue, '0' to exit");

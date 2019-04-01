@@ -57,7 +57,7 @@ public void playGame(Board _board) throws IOException
 			System.out.println("Rolled "+rolled+", you are on ["+position+1+"] "+_board.fields.get(position).name+" now. It's $"+_board.fields.get(position).price+".");
 			System.out.println();
 			
-			System.out.println("Press '1' to continue, '3' to buy this field (if enough cash)");
+			System.out.println("Press '1' to continue, '3' to buy this field (if enough cash), '4' to display info");
 			choice2=sc.next().charAt(0);
 			if(Character.isDigit(choice2))
 			{
@@ -84,6 +84,9 @@ public void playGame(Board _board) throws IOException
 				{
 					System.err.println("This field can't be bought.");
 				}
+				break;
+			case '4':
+				_board.fields.get(position).displayInfo();
 				break;
 				default:
 					System.err.println("Wrong input");
