@@ -44,4 +44,9 @@ public class OtherField extends Field{
 		System.out.println(this.name);
 		System.out.println("This field can't be bought");
 	}
+	@Override
+	protected void buildHouse(int n) {
+		// TODO Auto-generated method stub
+		
+	}
 }

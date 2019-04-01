@@ -86,7 +86,7 @@ public static void main(String[] args) throws IOException
 		switch(choice)
 		{
 		case '1':
-			board.players.get(i).playGame(board);
+			board.players.get(i).playGame(board,s);
 			if (board.players.size()>i+1)
 			{
 				++i;
@@ -112,5 +112,6 @@ public static void main(String[] args) throws IOException
 //	{
 //	System.out.println(f.name);
 //	}
+	s.close();
 }
 }

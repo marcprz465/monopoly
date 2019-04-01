@@ -12,4 +12,5 @@ Player owner;
 protected abstract void buyField(Player player);
 protected abstract boolean isOwned();
 protected abstract void displayInfo();
+protected abstract void buildHouse(int n);
 }

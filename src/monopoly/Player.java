@@ -29,11 +29,10 @@ public void displayPlayer()
 		System.out.println("Jail Free Cards: 0");
 	System.out.println("You are now at "+this.position+". field");
 }
-public void playGame(Board _board) throws IOException
+public void playGame(Board _board, Scanner sc) throws IOException
 {
 	System.out.println("Player "+this.name+", cash = $"+this.cash);
 	char choice, choice2;
-	Scanner sc=new Scanner(System.in);
 	boolean done=false;
 	System.out.println("Press '2' to roll a dice, '9' to check your status");
 	do
@@ -49,6 +48,8 @@ public void playGame(Board _board) throws IOException
 			if(tempPosition>39)
 			{
 				position=position+rolled-40;
+				this.cash+=200;
+				System.out.println("$200 for crossing start");
 			}
 			else
 			{
@@ -57,7 +58,7 @@ public void playGame(Board _board) throws IOException
 			System.out.println("Rolled "+rolled+", you are on ["+position+1+"] "+_board.fields.get(position).name+" now. It's $"+_board.fields.get(position).price+".");
 			System.out.println();
 			
-			System.out.println("Press '1' to continue, '3' to buy this field (if enough cash), '4' to display info");
+			System.out.println("Press '1' to continue, '3' to buy this field (if enough cash), '4' to display info, '5' to build house (if owning)");
 			choice2=sc.next().charAt(0);
 			if(Character.isDigit(choice2))
 			{
@@ -87,6 +88,27 @@ public void playGame(Board _board) throws IOException
 				break;
 			case '4':
 				_board.fields.get(position).displayInfo();
+				break;
+			case '5':
+				if(_board.fields.get(position).owner==this)
+				{
+				char n=sc.next().charAt(0);
+				if(Character.isDigit(n))
+				{
+					if((int)n-48<=4&&(int)n-48>0)
+					{
+				_board.fields.get(position).buildHouse((int)n-48);
+					}
+					else
+					{
+						System.err.println("Wrong amount of houses.");
+					}
+				}
+				}
+				else
+				{
+					System.err.println("It's not your field.");
+				}
 				break;
 				default:
 					System.err.println("Wrong input");

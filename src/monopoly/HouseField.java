@@ -28,13 +28,35 @@ public void buyField(Player pl)
 	this.owned=true;
 	pl.cash-=this.price;
 }
-public void buildHouse(int amount)
+public void buildHouse(int n, Player pl)
 {
-	this.houses+=amount;
+	if(pl.cash>=this.housePrice)
+	{
+	this.houses+=n;
+	pl.cash-=this.housePrice;}
+	else
+	{
+		System.err.println("Not enough money.");
+	}
 }
-public void buildHotel()
+public void buildHotel(Player pl)
 {
+	if(pl.cash>=this.housePrice)
+	{
+		if(this.houses==4)
+		{
 	this.isHotel=true;
+	pl.cash-=this.housePrice;
+		}
+		else
+		{
+			System.err.println("Buy 4 houses at first.");
+		}
+	}
+	else
+	{
+		System.err.println("Not enough money.");
+	}
 }
 public void sellHouse()
 {
@@ -70,5 +92,10 @@ public void displayInfo()
 		System.out.println("Price: "+this.price);
 	}
 	System.out.println(this.housePrice);
+}
+@Override
+protected void buildHouse(int n) {
+	// TODO Auto-generated method stub
+	
 }
 }
