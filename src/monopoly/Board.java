@@ -56,7 +56,7 @@ public Board()
 	fields.add(38, new OtherField("Luxury Tax",5));
 	fields.add(39, new HouseField("Boardwalk","blue",400,200));
 }
-public static void main(String[] args) throws IOException
+public static void mainFunction() throws IOException
 {
 	int i=0;
 	Board board=new Board();
