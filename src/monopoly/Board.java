@@ -8,6 +8,7 @@ public class Board {
 	Dice dice;
 	ArrayList<Player> players;
 ArrayList<Field> fields;
+int maxPlayers;
 public Board()
 {
 	dice=new Dice();
@@ -55,63 +56,5 @@ public Board()
 	fields.add(37, new HouseField("Park Place","blue",350,200));
 	fields.add(38, new OtherField("Luxury Tax",5));
 	fields.add(39, new HouseField("Boardwalk","blue",400,200));
-}
-public static void mainFunction() throws IOException
-{
-	int i=0;
-	Board board=new Board();
-	Scanner s=new Scanner(System.in);
-	char choice;
-	boolean done=false;
-	char maxPlayers;
-	do
-	{
-		System.out.println("How many players are playing?");
-	maxPlayers=s.next().charAt(0);
-	} while(!Character.isDigit(maxPlayers));
-	
-	for(int players=0;players<(int)maxPlayers-48;players++)
-	{
-		System.out.println("Enter "+(players+1)+" player's name:");
-		board.players.add(new Player(s.next()));
-	}
-//	System.out.println("Enter second player's name:");
-//	board.players.add(new Player(s.next()));
-	do
-	{
-		System.out.println("Press '1' to continue, '0' to exit");
-		choice=s.next().charAt(0);
-		if(Character.isDigit(choice))
-		{
-		switch(choice)
-		{
-		case '1':
-			board.players.get(i).playGame(board,s);
-			if (board.players.size()>i+1)
-			{
-				++i;
-			}
-			else
-			{
-				i=0;
-			}
-			break;
-		case '0':
-			done=true;
-			break;
-			default:
-				System.err.println("Wrong input");
-				break;
-		}
-		}
-	}while(!done);
-	System.out.println("Program exited");
-	//int sum=board.dice.rollDice();
-	//System.out.println(sum);
-//	for(Field f:board.fields)
-//	{
-//	System.out.println(f.name);
-//	}
-	s.close();
 }
 }
